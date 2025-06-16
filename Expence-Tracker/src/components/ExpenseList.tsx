@@ -78,9 +78,9 @@ export const ExpenseList: React.FC<ExpenseListProps> = ({
                   <h3 className="font-semibold text-base sm:text-lg">{expense.title}</h3>
                   <div className="flex flex-wrap gap-2">
                     <Badge className={`${getCategoryColor(expense.category)} text-xs sm:text-sm`}>
-                      {expense.category}
-                    </Badge>
-                    {getTypeBadge(expense.type)}
+                    {expense.category}
+                  </Badge>
+                  {getTypeBadge(expense.type)}
                   </div>
                 </div>
                 <div className="flex items-center gap-4 text-xs sm:text-sm text-muted-foreground">

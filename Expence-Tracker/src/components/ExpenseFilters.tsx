@@ -48,41 +48,41 @@ export const ExpenseFilters: React.FC<ExpenseFiltersProps> = ({
         <div className="flex flex-col gap-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="text-sm font-medium mb-2 block">Category</label>
-              <Select 
-                value={filters.category} 
-                onValueChange={handleCategoryChange}
-              >
+            <label className="text-sm font-medium mb-2 block">Category</label>
+            <Select 
+              value={filters.category} 
+              onValueChange={handleCategoryChange}
+            >
                 <SelectTrigger className="text-sm sm:text-base">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  {categories.map(category => (
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                {categories.map(category => (
                     <SelectItem key={category} value={category} className="text-sm sm:text-base">
-                      {category}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
+                    {category}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
 
             <div>
-              <label className="text-sm font-medium mb-2 block">Date Range</label>
-              <Select 
-                value={filters.dateRange} 
-                onValueChange={handleDateRangeChange}
-              >
+            <label className="text-sm font-medium mb-2 block">Date Range</label>
+            <Select 
+              value={filters.dateRange} 
+              onValueChange={handleDateRangeChange}
+            >
                 <SelectTrigger className="text-sm sm:text-base">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  {dateRanges.map(range => (
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                {dateRanges.map(range => (
                     <SelectItem key={range.value} value={range.value} className="text-sm sm:text-base">
-                      {range.label}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+                    {range.label}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
             </div>
           </div>
 
