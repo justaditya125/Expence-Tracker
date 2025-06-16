@@ -1,0 +1,13 @@
+{
+  "devDependencies": {
+    "@types/node": "^24.0.3",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6"
+  },
+  "dependencies": {
+    "@types/recharts": "^1.8.29",
+    "class-variance-authority": "^0.7.1",
+    "lucide-react": "^0.515.0",
+    "recharts": "^2.15.3"
+  }
+}
