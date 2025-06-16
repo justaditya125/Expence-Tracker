@@ -46,9 +46,9 @@ const Index = () => {
     });
   };
 
-  const handleUpdateExpense = (submittedExpense: Omit<Expense, '_id' | 'createdAt'>) => {
-    if (!editingExpense || !editingExpense._id) {
-      console.error("Error: No expense selected for editing or missing _id.");
+  const handleUpdateExpense = (id: string, updates: Partial<Expense>) => {
+    if (!id) {
+      console.error("Error: No expense ID provided for update.");
       toast({
         title: "Update Failed",
         description: "Could not find the expense to update.",
@@ -57,9 +57,9 @@ const Index = () => {
       return;
     }
     
-    updateExpense(editingExpense._id, submittedExpense);
-    setShowEditModal(false); // Close modal after update
-    setEditingExpense(undefined); // Clear editing expense
+    updateExpense(id, updates);
+    setShowEditModal(false);
+    setEditingExpense(undefined);
     toast({
       title: "Expense Updated",
       description: "Expense has been updated successfully.",
@@ -128,16 +128,17 @@ const Index = () => {
         </div>
 
         {/* Add Expense Form with Modern Styling */}
-        {showForm && (
-          <div className="mb-8">
-            <div className="glass-card rounded-2xl p-6 border-2 border-primary/20">
-              <ExpenseForm 
-                onSubmit={handleAddExpense}
-                onCancel={() => setShowForm(false)}
-              />
-            </div>
-          </div>
-        )}
+        <Dialog open={showForm} onOpenChange={setShowForm}>
+          <DialogContent className="sm:max-w-[425px]">
+            <DialogHeader>
+              <DialogTitle>Add New Expense</DialogTitle>
+            </DialogHeader>
+            <ExpenseForm 
+              onSubmit={handleAddExpense}
+              onCancel={() => setShowForm(false)}
+            />
+          </DialogContent>
+        </Dialog>
 
         {/* Enhanced Filters */}
         <div className="mb-8">
@@ -253,7 +254,7 @@ const Index = () => {
             {editingExpense && (
               <ExpenseForm
                 initialData={editingExpense}
-                onSubmit={handleUpdateExpense}
+                onSubmit={(updates) => handleUpdateExpense(editingExpense._id, updates)}
                 onCancel={() => {
                   setShowEditModal(false);
                   setEditingExpense(undefined);
