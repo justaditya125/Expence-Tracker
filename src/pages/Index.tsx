@@ -129,14 +129,16 @@ const Index = () => {
 
         {/* Add Expense Form with Modern Styling */}
         <Dialog open={showForm} onOpenChange={setShowForm}>
-          <DialogContent className="sm:max-w-[425px]">
-            <DialogHeader>
-              <DialogTitle>Add New Expense</DialogTitle>
+          <DialogContent className="w-[95%] max-w-[425px] mx-auto p-4 sm:p-6">
+            <DialogHeader className="mb-4">
+              <DialogTitle className="text-xl sm:text-2xl font-semibold">Add New Expense</DialogTitle>
             </DialogHeader>
-            <ExpenseForm 
-              onSubmit={handleAddExpense}
-              onCancel={() => setShowForm(false)}
-            />
+            <div className="max-h-[80vh] overflow-y-auto">
+              <ExpenseForm 
+                onSubmit={handleAddExpense}
+                onCancel={() => setShowForm(false)}
+              />
+            </div>
           </DialogContent>
         </Dialog>
 
